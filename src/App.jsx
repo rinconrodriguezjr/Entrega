@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import bgDay from "./assets/Img/sunnyday.jpg";
 import bgNight from "./assets/Img/backgroundnight1.jpg";
-import Sunny from "./assets/Img/Sunny.png"
-import Rainny from "./assets/Img/Rain.png"
-import Mild from "./assets/Img/mild.png"
+import bgSunny from "./assets/Img/Sunny.png";
+import bgRainny from "./assets/Img/Rain.png";
+import bgMild from "./assets/Img/mild.png";
 
 import { ClockLoader } from 'react-spinners';
 
@@ -95,9 +95,10 @@ navigator.geolocation.getCurrentPosition(success, error);
   const celcius = (weather.main?.temp - 273.15).toFixed(2);
 
 
-  const rainny = <img src="./src/assets/Img/Rain.png" alt=""></img>
-  const sunny = <img src="./src/assets/Img/Sunny.png" alt=""></img>
-  const milt = <img src="./src/assets/Img/mild.png" alt=""></img>
+  const rainny = bgRainny
+  const sunny = <img src={bgSunny} alt="" srcset="" />
+  const mild = bgMild
+  const milt = <img src={bgMild} alt="" srcset="" /> 
   
 
   return (
@@ -116,7 +117,7 @@ navigator.geolocation.getCurrentPosition(success, error);
         </div>
         <div className='info_container'>
           <section className='image_container'> 
-            <h4>  {celcius > 11.42 ? sunny : milt}     </h4>  
+            <h4>  {celcius > 12.97 ? sunny : milt}     </h4>  
             <h4>  {isKelvin ? fahrenheit : celcius} {isKelvin ? "°F" : "°C"}</h4>
           </section>
           <ul className='info_weather'>
