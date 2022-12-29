@@ -1,15 +1,34 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react'
 import './App.css'
+import bgDay from "./assets/Img/sunnyday.jpg";
+import bgNight from "./assets/Img/backgroundnight1.jpg";
+import Sunny from "./assets/Img/Sunny.png"
+import Rainny from "./assets/Img/Rain.png"
+import Mild from "./assets/Img/mild.png"
+
+import { ClockLoader } from 'react-spinners';
 
 
 
 function App() {
+
+  const [loading, setLoading] = useState(false);
   
-  const backgroundDay = `background-image: url(./src/assets/Img/sunnyday.jpg)`;
-  const backgroundNight = `background-image: url(./src/assets/Img/backgroundnight1.jpg)`;
+  document.body.style.backgroundImage = `url('${bgDay}')`
+  document.body.style.backgroundImage = `url('${bgNight}')`
+
+  useEffect(()=>{
+    setLoading(true)
+    setTimeout(()=>{
+      setLoading(false)
+    }, 3000)
+  },[])
   
-  document.body.style = backgroundDay
+  
+  // document.body.style = backgroundDay
+
+  // document.body.style = completeHour > 12 ? backgroundDay : backgroundNight
   // function imagen(){
   //   date = new Date();
   //   hour = date.getHours();
@@ -61,13 +80,13 @@ navigator.geolocation.getCurrentPosition(success, error);
     setIsKelvin(!isKelvin);
   };
   
-  const changeImgWeather = () => {
-    if (celcius < 12){
-      sunny
-    } else {
-      rainny
-    }
-  };
+  // const changeImgWeather = () => {
+  //   if (celcius < 12){
+  //     sunny
+  //   } else {
+  //     rainny
+  //   }
+  // };
   
   
 
@@ -84,14 +103,20 @@ navigator.geolocation.getCurrentPosition(success, error);
   return (
     
     <div className="App">
+    <div className="overlay" ></div>
+    { loading ? (
+        <ClockLoader loading={loading} color={"black"} size={500} className="loading" />
+      ):(
+      <header className="App-header">
+        
       <div className='container'>
         <div className='title_container'>
           <h1>Weather App</h1>
-          <h2>{weather.name}, {" "} {weather.sys?.country} {" "} <br /><span>{completeHour}</span></h2>
+          <h2>{weather.name}, {" "} {weather.sys?.country} {" "} <br /><span>{completeHour }</span></h2>
         </div>
         <div className='info_container'>
           <section className='image_container'> 
-            <h4>  {celcius > 12 ? sunny : rainny}     </h4>  
+            <h4>  {celcius > 11.42 ? sunny : milt}     </h4>  
             <h4>  {isKelvin ? fahrenheit : celcius} {isKelvin ? "°F" : "°C"}</h4>
           </section>
           <ul className='info_weather'>
@@ -103,6 +128,10 @@ navigator.geolocation.getCurrentPosition(success, error);
         </div>
         <button className='button' onClick={changeTemp} style={{background:"blueviolet", color:"white", fontWeight:"bolder"}}>Degrees °F/°C</button>
       </div>
+      </header>
+      )}
+
+     
     </div>
   )
 }
