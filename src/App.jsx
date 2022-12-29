@@ -95,9 +95,8 @@ navigator.geolocation.getCurrentPosition(success, error);
   const celcius = (weather.main?.temp - 273.15).toFixed(2);
 
 
-  const rainny = bgRainny
+  const rainny = <img src={bgRainny} alt="" srcset="" />
   const sunny = <img src={bgSunny} alt="" srcset="" />
-  const mild = bgMild
   const milt = <img src={bgMild} alt="" srcset="" /> 
   
 
