@@ -121,6 +121,8 @@ image{
   position: absolute;
   top: 10%;
   left: 0%;
+  font-weight: bolder;
+  
   /* -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); */
 }

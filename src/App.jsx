@@ -6,7 +6,6 @@ import bgNight from "./assets/Img/backgroundnight1.jpg";
 import bgSunny from "./assets/Img/Sunny.png";
 import bgRainny from "./assets/Img/Rain.png";
 import bgMild from "./assets/Img/mild.png";
-
 import { ClockLoader } from 'react-spinners';
 
 
@@ -105,7 +104,7 @@ navigator.geolocation.getCurrentPosition(success, error);
     <div className="App">
     <div className="overlay" ></div>
     { loading ? (
-        <ClockLoader loading={loading} color={"black"} size={500} className="loading" />
+        <ClockLoader loading={loading} color={"white"} size={500} className="loading" />
       ):(
       <header className="App-header">
         
@@ -116,7 +115,7 @@ navigator.geolocation.getCurrentPosition(success, error);
         </div>
         <div className='info_container'>
           <section className='image_container'> 
-            <h4>  {celcius > 12.97 ? sunny : milt}     </h4>  
+            <h4>  {celcius > 15 ? sunny : milt}     </h4>  
             <h4>  {isKelvin ? fahrenheit : celcius} {isKelvin ? "°F" : "°C"}</h4>
           </section>
           <ul className='info_weather'>
